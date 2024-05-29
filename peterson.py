@@ -2,12 +2,12 @@ from threading import Thread
 from time import sleep
 from random import random
 
+flag=[False,False]#Creat a flag list whit default False value for each thread.
+turn=0#Creat Turn variable whit default 0 value.
+counter=0#Creat a variable as shared counter.
 
-flag=[False,False]
-turn=0
-counter=0
-
-def increment(txt,I,J,inc):
+#define increament function as threads's targets:
+def increment(txt,I,J,inc):#(txt is thread name, I is thread ID,J is other thread ID and inc is the value for every thread increamenting to rich that.)
     global counter,flag,turn 
     for _ in range(inc):
         #Peterson entry  section:
