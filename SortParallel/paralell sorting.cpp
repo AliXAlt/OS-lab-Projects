@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <thread>
+#include <random>
+#include <algorithm>
 
 using namespace std;
 
@@ -42,8 +44,21 @@ void quicksort(vector<int> &arr, int left, int right)
 
 int main()
 {
-    vector<int> arr = {12, 54, 10, 65, 35, 77, 98, 5, 45};
+    vector<int> arr(1000);
     int n = arr.size();
+    
+    for(int i=1; i<n; ++i) {
+        arr[i] = i + 1;
+    }
+    
+    random_device rd;
+    mt19937 gen(rd());
+    shuffle(arr.begin(),arr.end(),gen);
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;    
     quicksort(arr, 0, n - 1);
     for (int i = 0; i < n; i++)
     {
