@@ -1,11 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <thread>
-#include <random>
-#include <algorithm>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
-
 
 void quicksort(vector<int> &arr, int left, int right)
 {
@@ -44,21 +43,16 @@ void quicksort(vector<int> &arr, int left, int right)
 
 int main()
 {
-    vector<int> arr(1000);
-    int n = arr.size();
-    
-    for(int i=1; i<n; ++i) {
-        arr[i] = i + 1;
-    }
-    
-    random_device rd;
-    mt19937 gen(rd());
-    shuffle(arr.begin(),arr.end(),gen);
-    for (int i = 0; i < n; i++)
+    srand(time(NULL));
+    const int SIZE = 1000;
+    vector<int> arr;
+
+    for (int i = 0; i <= SIZE; i++)
     {
-        cout << arr[i] << " ";
+        arr.push_back(rand());
     }
-    cout << endl;    
+
+    int n = 1000;
     quicksort(arr, 0, n - 1);
     for (int i = 0; i < n; i++)
     {
